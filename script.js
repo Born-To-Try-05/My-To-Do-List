@@ -3,11 +3,13 @@ const $$ = document.querySelectorAll.bind(document);
 
 const input = $("#input");
 const task = $(".task");
+const button = $("#button");
+
+let list = localStorage.getItem("taskList")
+  ? JSON.parse(localStorage.getItem("taskList"))
+  : [];
 
 function loadTask() {
-  let list = localStorage.getItem("taskList")
-    ? JSON.parse(localStorage.getItem("taskList"))
-    : [];
   if (list.length != 0) {
     renderTask(list);
   } else {
@@ -17,12 +19,15 @@ function loadTask() {
 
 loadTask();
 
-function addTask() {
+button.onclick = function addTask() {
+  let index = this.getAttribute("index");
   if (input.value) {
-    let list = localStorage.getItem("taskList")
-      ? JSON.parse(localStorage.getItem("taskList"))
-      : [];
-    list.push({ name: input.value });
+    if (index) {
+      list[index].name = input.value;
+      this.removeAttribute("index");
+    } else {
+      list = [...list, { name: input.value }];
+    }
     localStorage.setItem("taskList", JSON.stringify(list));
 
     renderTask(list);
@@ -30,7 +35,7 @@ function addTask() {
     alert("Please write your work to do");
   }
   input.value = "";
-}
+};
 
 function renderTask(list = []) {
   let content = "";
@@ -40,6 +45,7 @@ function renderTask(list = []) {
   <div class="box">
     <div class="icon"></div>
     <li class="text">${work.name}</li>
+    <span onclick="setTask(${index})"><i class="fa-solid fa-pen-to-square"></i></span>
     <span onclick="deleteTask(${index})"><i class="fa-solid fa-xmark"></i></span>
   </div>`;
   });
@@ -48,7 +54,6 @@ function renderTask(list = []) {
 }
 
 function deleteTask(index) {
-  let list = JSON.parse(localStorage.getItem("taskList"));
   list.splice(index, 1);
   localStorage.setItem("taskList", JSON.stringify(list));
   if (list.length === 0) {
@@ -65,3 +70,8 @@ task.addEventListener("click", function (e) {
   icon.classList.toggle("checked");
   text.classList.toggle("checked");
 });
+
+function setTask(index) {
+  input.value = list[index].name;
+  button.setAttribute("index", index);
+}
