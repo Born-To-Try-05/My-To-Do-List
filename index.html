@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To Do List</title>
+    <link rel="shortcut icon" href="./images/logo2.jpg" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/18ea624bf8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="row">
+        <h2>To Do List</h2>
+        <img src="./images/icon.png" alt="" />
+      </div>
+      <div class="row">
+        <input type="text" id="input" placeholder="Add your to do list" />
+        <button onclick="addTask()">Add</button>
+      </div>
+      <ul class="task"></ul>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

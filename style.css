@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: url("./images/background.jpg") no-repeat;
+  background-size: cover;
+  background-position: 0 -110px;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  margin-top: 150px;
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row h2 {
+  font-size: 36px;
+  padding: 0 90px;
+  background: -webkit-linear-gradient(92deg, #95d7e3, #eb76ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textAnimation 5s linear infinite alternate;
+}
+
+@keyframes textAnimation {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.row input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.row button {
+  border: none;
+  padding: 10px 16px;
+  background: #959de3;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.row button:hover {
+  opacity: 0.9;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background: url(./images/unchecked.png) no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.icon.checked {
+  background-image: url(./images/checked.png);
+}
+
+ul li {
+  list-style: none;
+  position: relative;
+  padding: 12px 8px 12px 8px;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ul li.checked {
+  text-decoration: line-through;
+  color: #555;
+}
+
+.box span i {
+  font-size: 24px;
+  padding: 8px;
+}
+
+.box span:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
